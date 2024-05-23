@@ -106,7 +106,7 @@ public class DataCollector {
         try {
         	// Initialize DataCollector and process the CSV file
             DataCollector data = new DataCollector("/your/path/to/papers.csv");
-            data.processCSV("/your/path/to/SearchEngineLucene/data/data.txt");
+            data.processCSV("/your/path/to/data.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }

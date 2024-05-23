@@ -28,7 +28,7 @@ public class SearchGUI {
     private Resolution res = new Resolution("600x200");
     private String mainResolution = res.getResolution();
 
-    private static final String HISTORY_FILE = "/your/path/to/SearchEngineLucene/data/search_history.txt";
+    private static final String HISTORY_FILE = "/your/path/to/data/search_history.txt";
 
     // Constructor
     public SearchGUI(String indexPath, HashSet<Record> recordSet) throws IOException {
@@ -174,8 +174,8 @@ public class SearchGUI {
     public static void main(String[] args) {
         try {
             DataCollector dataCollector = new DataCollector("/your/path/to/papers.csv");
-            dataCollector.processCSV("/your/path/to/SearchEngineLucene/data/data.txt");
-            new SearchGUI("/your/path/to/SearchEngineLucene/index", dataCollector.getRecords());
+            dataCollector.processCSV("/your/path/to/data.txt");
+            new SearchGUI("/your/path/to/index", dataCollector.getRecords());
         } catch (IOException e) {
             e.printStackTrace();
         }

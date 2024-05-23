@@ -1,13 +1,7 @@
-<<<<<<< HEAD
 ﻿# Search Engine Lucene
 
 **Overview**
 
-=======
-#Search Engine Lucene
-
-##Overview
->>>>>>> 506abbf07474c6d577af05b01a02afae328b79a5
 This project is a comprehensive system for collecting data from CSV files, indexing the data using Apache Lucene, and providing a graphical user interface (GUI) for searching and viewing the collected data. The system is divided into four main components:
 
   
@@ -20,14 +14,10 @@ Searching: Provides functionality to search the indexed data using various searc
 
 Graphical User Interface (GUI): Offers an interactive GUI for users to perform searches and view results.
 
-<<<<<<< HEAD
   
 
 **Components**
 
-=======
-##Components
->>>>>>> 506abbf07474c6d577af05b01a02afae328b79a5
 1. Data Collection
 
 The DataCollector class is responsible for reading data from a CSV file, processing it, and saving it to a text file. The data is also stored in a HashSet of Record objects for further use.
@@ -66,14 +56,10 @@ The Search class provides methods for keyword search, field-specific search, and
 
 The SearchGUI class provides a GUI for users to perform searches and view the results. The results are displayed in a paginated format, with the option to view the full text of selected records.
 
-<<<<<<< HEAD
   
 
 **How to Use**
 
-=======
-##How to Use
->>>>>>> 506abbf07474c6d577af05b01a02afae328b79a5
 Prerequisites
 
 Java Development Kit (JDK) 8 or higher
@@ -82,14 +68,10 @@ Apache Lucene library
 
 Apache Commons CSV library
 
-<<<<<<< HEAD
   
 
 **Setup**
 
-=======
-##Setup
->>>>>>> 506abbf07474c6d577af05b01a02afae328b79a5
 Clone the Repository: Clone the project repository to your local machine.
 
 Configure File Paths: Ensure the file paths in the code are correctly set to your local directories:
@@ -106,14 +88,10 @@ Index directory path in SearchGUI constructor.
 
 Compile the Project: Compile all Java files using your preferred Java IDE or command-line tools.
 
-<<<<<<< HEAD
   
 
 **Running the Application**
 
-=======
-##Running the Application
->>>>>>> 506abbf07474c6d577af05b01a02afae328b79a5
 Data Collection: Run the DataCollector main method to process the CSV file and generate the text file.
 
 Indexing: Run the Index main method to index the text file.
@@ -128,14 +106,10 @@ Perform Search: Click the "Search" button to perform the search.
 
 View Results: Browse through the search results, and click on any result to view the full text.
 
-<<<<<<< HEAD
   
 
 **Additional Features**
 
-=======
-##Additional Features
->>>>>>> 506abbf07474c6d577af05b01a02afae328b79a5
 Search History: The GUI maintains a history of recent searches, which can be accessed from the search input dropdown.
 
 Pagination: Results are paginated for easy navigation.

@@ -1,25 +1,60 @@
-# info-retrieval-24-4042-4084
-Lucene Project for Prof. Pitoura's Information Retrieval Class. Made by Aggeliki Gkavardina and Alexandros Kokkinos.
+**Search Engine Lucene**
 
-#Επιλογή συλλογής εγγράφων και περιγραφή πεδίων αυτών.
+**Overview**
+This project is a comprehensive system for collecting data from CSV files, indexing the data using Apache Lucene, and providing a graphical user interface (GUI) for searching and viewing the collected data. The system is divided into four main components:
 
-Επιλέξαμε την συλλογή εγγράφων All NeurIPS (NIPS) Papers που μας προτάθηκε να χρησιμοποιήσουμε για την υλοποίηση της μηχανής αναζήτησης. Αρχικά κατεβάσαμε την συλλογή από την ιστοσελίδα Kaggle.com. 
-Η συλλογή έχει 2 αρχεία: 
-1.	Το αρχείο authors που περιέχει τις στήλες  source_id που περιέχει τα id  του άρθρου το οποίο έχει δημοσιεύσει ο κάθε συγγραφέας, first_name που περιέχει το μικρό τους όνομα, last_name που περιέχει το επίθετό τους και institution που λέει για ποιόν φορέα εργάζονται, και
-2.	Το αρχείο papers που περιέχει τις στήλες source_id που είναι το ίδιο με το άνωθεν αρχείο, year που περιέχει την χρονιά δημοσίευσης του άρθρου, title που περιέχει τον τίτλο του, abstract που περιέχει την περίληψη του, και full_text που περιέχει όλο το άρθρο.
-Για το κάθε άρθρο που έχουμε επιλέξει θα χρησιμοποιήσουμε index για να εισάγουμε τα έγγραφα στο IndexWriter.
+Data Collection: Reads data from a CSV file and processes it into a text file format.
+Indexing: Indexes the processed data using Apache Lucene for efficient search capabilities.
+Searching: Provides functionality to search the indexed data using various search types.
+Graphical User Interface (GUI): Offers an interactive GUI for users to perform searches and view results.
 
-#Υλοποίηση αναζητήσεων.
+**Components**
+1. Data Collection
+The DataCollector class is responsible for reading data from a CSV file, processing it, and saving it to a text file. The data is also stored in a HashSet of Record objects for further use.
 
-Κατά την λειτουργικότητα 1 της μηχανής αναζήτησης, ο χρήστης θα έχει την δυνατότητα να κάνει αναζήτηση με λέξεις κλειδιά στα πεδία βάσει συγγραφέως, τίτλου, χρονιάς και ινστιτούτου. Αυτό θα υλοποιηθεί με αντεστραμμένα ευρετήρια που θα αφορούν τα πεδία αυτά ξεχωριστά. Για να κάνει ο χρήστης αυτή την αναζήτηση αρχικά θα πρέπει να προσδιορίζει μέσω πεδίων που θα προσφέρουμε με την μηχανή αναζήτησής μας. Δηλαδή θα ορίζει «φίλτρα» αναζήτησης, όπως ποιον τίτλο θα ήθελε να έχει το σύγγραμμά του, την χρονιά δημοσίευσής του, το ινστιτούτο υπό το οποίο δημοσιεύτηκε και τον συγγραφέα του, όπως σε άλλες σύγχρονες εφαρμογές με λειτουργικότητα αναζήτησης. Αφού τα κάνει αυτά, θα πρέπει να επιλέξει την λειτουργία «Αναζήτηση με βάση λέξη κλειδί» και η αναζήτηση θα πραγματοποιείται.
-Κατά την λειτουργικότητα 2 της μηχανής αναζήτησης, ο χρήστης θα ψάχνει λέξεις κλειδιά μέσα από τα πεδία τίτλου, περίληψης και μέσα σε όλο το κείμενο. Μέσω της λειτουργικότητας «Απλή αναζήτηση», ο χρήστης θα εισάγει λέξεις-κλειδιά σε μια μπάρα αναζήτησης. Η μηχανή θα ψάχνει αυτές τις λέξεις κλειδιά μέσα στον τίτλο, το κείμενο και την περίληψη και θα εμφανίζει τα αποτελέσματα που επιθυμεί ο χρήστης και θα κάνει highlight τις λέξεις κλειδιά. Για αυτό θα φτιάξουμε ένα αντεστραμμένο ευρετήριο που θα αφορά τα παραπάνω πεδία τα οποία θα κάνουμε tokenize, δηλαδή θα τα χωρίσουμε σε μικρότερα μέρη και έπειτα μέσω ανάλυσης θα δημιουργήσουμε το ευρετήριο.
-Κατά την 3η λειτουργικότητα θα χρησιμοποιήσουμε μια υβριδική αναζήτηση, δηλαδή έναν συνδυασμό από τις 2 παραπάνω αναζητήσεις. Ο χρήστης θα βάζει λέξεις κλειδιά και θα μπορεί να επιλέγει και «φίλτρα» ώστε να βγαίνουν ακόμα πιο συγκεκριμένα αποτελέσματα από τις άλλες 2 αναζητήσεις, απλά θα χρειάζεται ο χρήστης να επιλέγει την επιλογή «Αναζήτηση για προχωρημένους» ή «Σύνθετη Αναζήτηση» (ΤΒΑ).
-Η μηχανή μας θα έχει ιδιότητες που μας παρέχει η Lucene όπως stemming, lemmatization και token normalization τα οποία μας χρειάζονται λόγω της πληθώρας πληροφορίας των εγγράφων. Εφόσον έχουμε άρθρα, θέλουμε να μην χωρίζει τις λέξεις πχ. Play, plays ως 2 αποτελέσματα ούτε τους όρους U.S.A. και USA ως διαφορετικούς.
+CSV Input: /your/path/to/file.csv (Linux)
+            your\\path\\to\\file.csv (Windows)
+Text Output: /your/path/to/data.txt (Linux)
+            your\\path\\to\\data.txt 
+2. Indexing
+The Index class indexes the text file created by the DataCollector class using Apache Lucene. This enables fast and efficient searches over the data.
 
-#Διεπαφή.
+Index Directory: /your/path/to/index_directory (Linux)
+                your\\path\\to\\index_directory
+Text File for Indexing: your/path/to/data.txt (Linux)
+                        your\\path\\to\\data.txt
+3. Searching
+The Search class provides methods for keyword search, field-specific search, and phrase search using the Lucene index.
 
-Σαν πρώτη ιδέα σκεφτήκαμε να χρησιμοποιήσουμε παράθυρα. Αρχικά θα εμφανίζεται ένα παράθυρο όπου ο χρήστης θα επιλέγει είτε αναζήτηση μέσω έτοιμων φίλτρων είτε να πληκτρολογεί μόνος του τι επιθυμεί να ψάξει. Αφού επιλέξει θα πηγαίνει σε άλλο παράθυρο όπου θα βλέπει τα αποτελέσματα της αναζήτησης του. Εκεί θα μπορεί να επιλέξει εκείνο που επιθυμεί και να μεταφερθεί σε ένα τελευταίο παράθυρο, όπου και θα μπορεί τελικά να διαβάσει το άρθρο που επέλεξε. Θα εμφανίζεται τίτλος, σύντομη περίληψη και αφού κάνει κλικ πάνω στον τίτλο, ολόκληρο το άρθρο.
+4. Graphical User Interface (GUI)
+The SearchGUI class provides a GUI for users to perform searches and view the results. The results are displayed in a paginated format, with the option to view the full text of selected records.
 
-#Διάταξη.
+**How to Use**
+Prerequisites
+Java Development Kit (JDK) 8 or higher
+Apache Lucene library
+Apache Commons CSV library
 
-Για τις λειτουργικότητες της μηχανής αναζήτησης μας, ο βασικός τρόπος διάταξης θα είναι με βάση τη συχνότητα εμφάνισης των όρων που αναζητά ο χρήστης. Αυτό θα επιτευχθεί μέσω υπολογισμού της συχνότητας όρου και αντίστροφης συχνότητας εγγράφου (tf, idf), καθώς και του βαθμού εγγράφου και ερώτησης (scoring). Επίσης σκεφτόμαστε να εμφανίζονται πρώτα τα άρθρα που έχουν δημοσιευθεί πιο πρόσφατα.
+**Setup**
+Clone the Repository: Clone the project repository to your local machine.
+Configure File Paths: Ensure the file paths in the code are correctly set to your local directories:
+CSV input file path in DataCollector constructor.
+Text output file path in processCSV method of DataCollector.
+Index directory path in Index constructor.
+Text file path for indexing in indexTextFile method of Index.
+Index directory path in SearchGUI constructor.
+Compile the Project: Compile all Java files using your preferred Java IDE or command-line tools.
+
+**Running the Application**
+Data Collection: Run the DataCollector main method to process the CSV file and generate the text file.
+Indexing: Run the Index main method to index the text file.
+Search GUI: Run the SearchGUI main method to start the GUI.
+Search Query: Enter your search query in the input field.
+Select Search Type: Choose the search type (Keyword, Field, Phrase) from the dropdown.
+Perform Search: Click the "Search" button to perform the search.
+View Results: Browse through the search results, and click on any result to view the full text.
+
+**Additional Features**
+Search History: The GUI maintains a history of recent searches, which can be accessed from the search input dropdown.
+Pagination: Results are paginated for easy navigation.
+Sorting: Option to sort search results by year.

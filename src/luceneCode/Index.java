@@ -77,8 +77,8 @@ public class Index {
     public static void main(String[] args) {
         try {
         	// Initialize Index and index the text file
-            Index indexer = new Index("/your/path/to/SearchEngineLucene/index");
-            indexer.indexTextFile("/your/path/to/SearchEngineLucene/data/data.txt");
+            Index indexer = new Index("/your/path/to/index");
+            indexer.indexTextFile("/your/path/to/data.txt");
             indexer.close();
         } catch (IOException e) {
             e.printStackTrace();

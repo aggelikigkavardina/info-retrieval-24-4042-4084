@@ -21,7 +21,7 @@ Graphical User Interface (GUI): Offers an interactive GUI for users to perform s
 1. Data Collection
 
 The DataCollector class is responsible for reading data from a CSV file, processing it, and saving it to a text file. The data is also stored in a HashSet of Record objects for further use.
-
+We used the dataset from this website: https://www.kaggle.com/datasets/rowhitswami/nips-papers-1987-2019-updated/data?select=papers.csv 
   
 
 CSV Input: /your/path/to/file.csv (Linux)
